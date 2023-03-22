@@ -18,6 +18,13 @@ export const TodoProvider = ({ children }) => {
     );
   };
 
+  const editTodo = id => {
+    setTodos(prevState =>
+      prevState.map(todo => {
+        return todo.id === id ? { ...todo, isEdited: !todo.isEdited } : todo;
+      })
+    );
+  };
   const completeTodo = id => {
     setTodos(prevState =>
       prevState.map(todo => {
@@ -26,7 +33,7 @@ export const TodoProvider = ({ children }) => {
     );
   };
 
-  return <TodoContext.Provider value={{ todos, addTodo, removeTodo, completeTodo }}>{children}</TodoContext.Provider>;
+  return <TodoContext.Provider value={{ todos, addTodo, removeTodo, editTodo, completeTodo }}>{children}</TodoContext.Provider>;
 };
 
 export default TodoContext;
