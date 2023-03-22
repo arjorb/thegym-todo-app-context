@@ -3,9 +3,8 @@ import { HiPlusCircle } from 'react-icons/hi';
 import TodoContext from '../TodoContext';
 
 const TodoInput = () => {
-  const { addTodo } = useContext(TodoContext);
-
   const [input, setInput] = useState('');
+  const { addTodo } = useContext(TodoContext);
 
   const handleSubmit = () => {
     addTodo(input);
