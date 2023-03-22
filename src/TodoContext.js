@@ -12,13 +12,21 @@ export const TodoProvider = ({ children }) => {
 
   const removeTodo = id => {
     setTodos(prevState =>
-      prevState.filter(prev => {
-        return prev.id !== id;
+      prevState.filter(todo => {
+        return todo.id !== id;
       })
     );
   };
 
-  return <TodoContext.Provider value={{ todos, addTodo, removeTodo }}>{children}</TodoContext.Provider>;
+  const completeTodo = id => {
+    setTodos(prevState =>
+      prevState.map(todo => {
+        return todo.id === id ? { ...todo, isChecked: !todo.isChecked } : todo;
+      })
+    );
+  };
+
+  return <TodoContext.Provider value={{ todos, addTodo, removeTodo, completeTodo }}>{children}</TodoContext.Provider>;
 };
 
 export default TodoContext;
