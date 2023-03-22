@@ -10,7 +10,15 @@ export const TodoProvider = ({ children }) => {
     setTodos(prevState => [...prevState, { id: nanoid(), title: title, isChecked: false, isEdited: false }]);
   };
 
-  return <TodoContext.Provider value={{ todos, addTodo }}>{children}</TodoContext.Provider>;
+  const removeTodo = id => {
+    setTodos(prevState =>
+      prevState.filter(prev => {
+        return prev.id !== id;
+      })
+    );
+  };
+
+  return <TodoContext.Provider value={{ todos, addTodo, removeTodo }}>{children}</TodoContext.Provider>;
 };
 
 export default TodoContext;
