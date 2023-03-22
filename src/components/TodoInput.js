@@ -7,6 +7,7 @@ const TodoInput = () => {
   const { addTodo } = useContext(TodoContext);
 
   const handleSubmit = () => {
+    if (input.trim() === '') return;
     addTodo(input);
     setInput('');
   };

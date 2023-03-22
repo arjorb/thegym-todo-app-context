@@ -1,8 +1,12 @@
 import { FaTrash } from 'react-icons/fa';
 import { HiOutlinePencilSquare } from 'react-icons/hi2';
 import { HiPlusCircle } from 'react-icons/hi';
+import TodoContext from '../TodoContext';
+import { useContext } from 'react';
 const TodoList = () => {
-  return (
+  const { todos } = useContext(TodoContext);
+
+  const todosElement = todos.map(todo => (
     <div className='flex justify-between gap-5 items-center mt-5 border-b-2 border-gray-100 pb-2 w-150'>
       <div className='flex gap-3 items-baseline'>
         <input type='checkbox' id='todo' />
@@ -12,7 +16,8 @@ const TodoList = () => {
         <FaTrash className='text-red-500' />
       </div>
     </div>
-  );
+  ));
+  return <div>{todosElement}</div>;
 };
 
 export default TodoList;
