@@ -3,7 +3,7 @@ import { HiOutlinePencilSquare } from 'react-icons/hi2';
 import TodoContext from '../TodoContext';
 import { useContext } from 'react';
 const TodoList = () => {
-  const { todos, removeTodo, editTodo, completeTodo } = useContext(TodoContext);
+  const { todos, removeTodo, updateTodo, editTodo, completeTodo } = useContext(TodoContext);
 
   const todosElement = todos.map(todo => (
     <div key={todo.id} className='flex justify-between gap-5 items-center mt-5 border-b-2 border-gray-100 pb-2 w-150'>
@@ -14,7 +14,7 @@ const TodoList = () => {
         </div>
       ) : (
         <div className='w-full flex items-center border border-slate-300 rounded-sm'>
-          <input type='text' value={todo.title} className='w-full py-2 pl-2 outline-none' />
+          <input type='text' value={todo.title} onChange={event => updateTodo(todo.id, event.target.value)} className='w-full py-2 pl-2 outline-none' />
         </div>
       )}
       <div className='flex gap-2'>
