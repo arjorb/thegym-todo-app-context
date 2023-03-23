@@ -2,6 +2,7 @@ import { FaTrash } from 'react-icons/fa';
 import { HiOutlinePencilSquare } from 'react-icons/hi2';
 import TodoContext from '../TodoContext';
 import { useContext } from 'react';
+
 const TodoList = () => {
   const { todos, removeTodo, updateTodo, editTodo, completeTodo } = useContext(TodoContext);
 
